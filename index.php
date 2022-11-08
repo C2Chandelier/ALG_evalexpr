@@ -9,7 +9,7 @@ function eval_expr($expr)
     $array = [];
 
     for ($j = 0; $j < strlen($expr); $j++) {
-        if ($expr[$j] == "+" || $expr[$j] == "-" || $expr[$j] == "*" || $expr[$j] == "/" || $expr[$j] == "%" || $expr[$j] == "(" || $expr[$j] == ")") {
+        if(preg_match('/[()+\-*\/%]/',$expr[$j])){
             array_push($operator, $expr[$j]);
             array_push($number, implode("", $array));
             $array = [];
@@ -121,3 +121,5 @@ function calculate($calculator)
         return $result;
     }
 }
+
+
